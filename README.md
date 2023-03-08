@@ -1,1 +1,1 @@
-# amazing_events
+# app_javascript
