@@ -83,242 +83,53 @@
     </header>
 
     <main>
-        <div>
-            <section>
-                <!-- Button Search -->
-                <div class="container mt-3">
-                    <div class="row">
+        <div class="mt-3">
+            <!-- Button Search -->
+            <h3 class="text-center fw-bold text-uppercase">Cost Events</h3>
+            <div class="container">
+                <div class="row">
 
-                        <div class="col-1"></div>
+                    <div class="col-1"></div>
 
-                        <div class="col-10">
-                            <div class="input-group mb-3 mt-4">
-                                <input type="text" class="form-control rounded-start" placeholder="Search Data"
-                                    aria-label="Search Data">
-                                <button class="btn text-white rounded-end" style="background-color: #537FE7;"
-                                    type="submit" id="btnSearch" data-mdb-ripple-color="dark">
-                                    Search
-                                </button>
-                            </div>
+                    <div class="col-10">
+                        <div class="input-group mb-3 mt-4">
+                            <input id="searchCards" type="search" class="form-control rounded-start searchCards"
+                                placeholder="Search..." aria-label="Search Data">
+                            <button class="btn text-white rounded-end" style="background-color: #537FE7;" type="submit"
+                                id="btnCleanOff" name="btnCleanOff" data-mdb-ripple-color="dark">
+                                Clean All
+                            </button>
                         </div>
-
-                        <div class="col-1"></div>
-
                     </div>
+
+                    <div class="col-1"></div>
+
                 </div>
-                <!-- END Button Search -->
-            </section>
+            </div>
+            <!-- END Button Search -->
         </div>
         <!-- Sections Checkbox -->
         <div>
-            <section>
-                <div class="container">
-                    <div class="row">
-                        <div class="flex-containers">
+            <div class="container">
+                <div class="row">
 
-                            <div>
-                                <input class="form-check-input" type="checkbox" value="ckboxCategory1"
-                                    id="ckboxCategory1">
-                                <label class="form-check-label" for="ckboxCategory1"> Category 1</label>
-                            </div>
-                            <div>
-                                <input class="form-check-input" type="checkbox" value="ckboxCategory2"
-                                    id="ckboxCategory2">
-                                <label class="form-check-label" for="ckboxCategory2"> Category 2</label>
-                            </div>
-                            <div>
-                                <input class="form-check-input" type="checkbox" value="ckboxCategory3"
-                                    id="ckboxCategory3">
-                                <label class="form-check-label" for="ckboxCategory3"> Category 3</label>
-                            </div>
-                            <div>
-                                <input class="form-check-input" type="checkbox" value="ckboxCategory4"
-                                    id="ckboxCategory4">
-                                <label class="form-check-label" for="ckboxCategory4"> Category 4</label>
-                            </div>
-                            <div>
-                                <input class="form-check-input" type="checkbox" value="ckboxCategory5"
-                                    id="ckboxCategory5">
-                                <label class="form-check-label" for="ckboxCategory5"> Category 5</label>
-                            </div>
-                            <div>
-                                <input class="form-check-input" type="checkbox" value="ckboxCategory6"
-                                    id="ckboxCategory6">
-                                <label class="form-check-label" for="ckboxCategory6"> Category 6</label>
-                            </div>
+                    <div class="flex-containers" id="cBCategories"></div>
 
-                        </div>
-                    </div>
                 </div>
-            </section>
+            </div>
         </div>
         <!-- END Sections Checkbox-->
         <!-- Sections Cards -->
         <div>
-            <section>
-                <div class="container mb-4">
-                    
-                    <div class="row row-cols-1 row-cols-md-3 g-4" id="cardsUpcomingEvents"></div>
 
-                    <!-- <div class="row row-cols-1 row-cols-md-3 g-4">
-                        <div class="col mb-4">
-                            <div class="card">
-                                <img class="imgSize card-img-top" src="https://i.postimg.cc/ZmD3Xf57/Korean-style.jpg"
-                                    alt="...">
-                                <div class="card-body">
-                                    <h3 class="card-title d-flex justify-content-center">Korean style</h3>
-                                    <p class="card-text"><strong>Date: </strong>2022-08-12</p>
-                                    <p class="card-text"><strong>Description: </strong>Enjoy the best Korean dishes,
-                                        with international chefs and awesome events.</p>
-                                    <p class="card-text"><strong>Category: </strong>Food Fair</p>
-                                    <p class="card-text"><strong>Place: </strong>Room A</p>
-                                    <p class="card-text"><strong>Capacity: </strong>45000</p>
-                                    <p class="card-text"><strong>Assistance: </strong>42756</p>
-                                    <p class="card-text"><strong>Price: $</strong>10</p>
-                                </div>
-                                <div class="d-grid gap-2">
-                                    <a href="./details.html" id="goEvent1" class="btn text-white"
-                                        style="background-color: #537FE7;">Go to Event</a>
-                                </div>
-                            </div>
-                        </div>
+            <div class="container mb-4">
 
-                        <div class="col mb-4">
-                            <div class="card">
-                                <img class="imgSize card-img-top"
-                                    src="https://i.postimg.cc/c4C2zXm8/Parisian-Museum.jpg" alt="...">
-                                <div class="card-body">
-                                    <h3 class="card-title d-flex justify-content-center">Parisian Museum</h3>
-                                    <p class="card-text"><strong>Date: </strong>2022-11-02</p>
-                                    <p class="card-text"><strong>Description: </strong>A unique tour in the city of
-                                        lights, get to know one of the most iconic places.</p>
-                                    <p class="card-text"><strong>Category: </strong>Museum</p>
-                                    <p class="card-text"><strong>Place: </strong>Paris</p>
-                                    <p class="card-text"><strong>Capacity: </strong>8200</p>
-                                    <p class="card-text"><strong>Assistance: </strong>undefined</p>
-                                    <p class="card-text"><strong>Price: $</strong>3500</p>
-                                </div>
-                                <div class="d-grid gap-2">
-                                    <a href="./details.html" id="goEvent2" class="btn text-white"
-                                        style="background-color: #537FE7;">Go to Event</a>
-                                </div>
-                            </div>
-                        </div>
+                <div class="row row-cols-1 row-cols-md-3 g-4" id="cardsAllEvents"></div>
 
-                        <div class="col mb-4">
-                            <div class="card">
-                                <img class="imgSize card-img-top" src="https://i.postimg.cc/RZ9fH4Pr/halloween.jpg"
-                                    alt="...">
-                                <div class="card-body">
-                                    <h3 class="card-title d-flex justify-content-center">Halloween Night</h3>
-                                    <p class="card-text"><strong>Date: </strong>2022-02-12</p>
-                                    <p class="card-text"><strong>Description: </strong>Come with your scariest costume
-                                        and win incredible prizes.</p>
-                                    <p class="card-text"><strong>Category: </strong>Costume Party</p>
-                                    <p class="card-text"><strong>Place: </strong>Room C</p>
-                                    <p class="card-text"><strong>Capacity: </strong>12000</p>
-                                    <p class="card-text"><strong>Assistance: </strong>undefined</p>
-                                    <p class="card-text"><strong>Price: $</strong>12</p>
-                                </div>
-                                <div class="d-grid gap-2">
-                                    <a href="./details.html" id="goEvent3" class="btn text-white"
-                                        style="background-color: #537FE7;">Go to Event</a>
-                                </div>
-                            </div>
-                        </div>
+            </div>
 
-                        <div class="col mb-4">
-                            <div class="card">
-                                <img class="imgSize card-img-top"
-                                    src="https://i.postimg.cc/PrMJ0ZMc/Metallica-in-concert.jpg" alt="...">
-                                <div class="card-body">
-                                    <h3 class="card-title d-flex justify-content-center">Metallica in concert</h3>
-                                    <p class="card-text"><strong>Date: </strong>2022-01-22</p>
-                                    <p class="card-text"><strong>Description: </strong>The only concert of the most
-                                        emblematic band in the world.</p>
-                                    <p class="card-text"><strong>Category: </strong>Music Concert</p>
-                                    <p class="card-text"><strong>Place: </strong>Room A</p>
-                                    <p class="card-text"><strong>Capacity: </strong>138000</p>
-                                    <p class="card-text"><strong>Assistance: </strong>undefined</p>
-                                    <p class="card-text"><strong>Price: $</strong>150</p>
-                                </div>
-                                <div class="d-grid gap-2">
-                                    <a href="./details.html" id="goEvent4" class="btn text-white"
-                                        style="background-color: #537FE7;">Go to Event</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col mb-4">
-                            <div class="card">
-                                <img class="imgSize card-img-top" src="https://i.postimg.cc/zv67r65z/15kny.jpg"
-                                    alt="...">
-                                <div class="card-body">
-                                    <h3 class="card-title d-flex justify-content-center">15K NY</h3>
-                                    <p class="card-text"><strong>Date: </strong>2022-03-01</p>
-                                    <p class="card-text"><strong>Description: </strong>We'll be raising funds for
-                                        hospitals and medical care in this unique event held in The Big Apple.</p>
-                                    <p class="card-text"><strong>Category: </strong>Race</p>
-                                    <p class="card-text"><strong>Place: </strong>New York</p>
-                                    <p class="card-text"><strong>Capacity: </strong>3000000</p>
-                                    <p class="card-text"><strong>Assistance: </strong>2569800</p>
-                                    <p class="card-text"><strong>Price: $</strong>3</p>
-                                </div>
-                                <div class="d-grid gap-2">
-                                    <a href="./details.html" id="goEvent5" class="btn text-white"
-                                        style="background-color: #537FE7;">Go to Event</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col mb-4">
-                            <div class="card">
-                                <img class="imgSize card-img-top" src="https://i.postimg.cc/Sst763n6/book1.jpg"
-                                    alt="...">
-                                <div class="card-body">
-                                    <h3 class="card-title d-flex justify-content-center">School's book fair</h3>
-                                    <p class="card-text"><strong>Date: </strong>2022-10-15</p>
-                                    <p class="card-text"><strong>Description: </strong>Bring your unused school book and
-                                        take the one you need.</p>
-                                    <p class="card-text"><strong>Category: </strong>Book Exchange</p>
-                                    <p class="card-text"><strong>Place: </strong>Room D1</p>
-                                    <p class="card-text"><strong>Capacity: </strong>150000</p>
-                                    <p class="card-text"><strong>Assistance: </strong>undefined</p>
-                                    <p class="card-text"><strong>Price: $</strong>1</p>
-                                </div>
-                                <div class="d-grid gap-2">
-                                    <a href="./details.html" id="goEvent6" class="btn text-white"
-                                        style="background-color: #537FE7;">Go to Event</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col mb-4">
-                            <div class="card">
-                                <img class="imgSize card-img-top" src="https://i.postimg.cc/T3C92KTN/scale.jpg"
-                                    alt="...">
-                                <div class="card-body">
-                                    <h3 class="card-title d-flex justify-content-center">Avengers</h3>
-                                    <p class="card-text"><strong>Date: </strong>2022-10-15</p>
-                                    <p class="card-text"><strong>Description: </strong>Marvel's Avengers Premier in 3d,
-                                        the start of an epic saga with your favourite superheroes.</p>
-                                    <p class="card-text"><strong>Category: </strong>Cinema</p>
-                                    <p class="card-text"><strong>Place: </strong>Room D1</p>
-                                    <p class="card-text"><strong>Capacity: </strong>9000</p>
-                                    <p class="card-text"><strong>Assistance: </strong>undefined</p>
-                                    <p class="card-text"><strong>Price: $</strong>250</p>
-                                </div>
-                                <div class="d-grid gap-2">
-                                    <a href="./details.html" id="goEvent7" class="btn text-white"
-                                        style="background-color: #537FE7;">Go to Event</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
-
-                </div>
-            </section>
         </div>
+        <div class="mb-9" style="background-color: aquamarine;"></div>
         <!-- END Sections Cards -->
     </main>
 

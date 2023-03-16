@@ -1,40 +1,144 @@
 let currentDate = data.currentDate;
-let template = "";
+let events = data.events;
+let inputSearchCards = document.querySelector('.searchCards');
+let checkBoxCategories = document.getElementById('cBCategories');
+const cardsAllEvents = document.getElementById('cardsAllEvents');
+let newEvents = [], orderEvents = [];
 
-function cards (currentDate, events) {
+
+// ******************************************
+//                   FUNCTIONS
+// ******************************************
+// CREATE CARDS
+function cards (events) {  
+
+    let template = "";
     
-    const cardsUpcomingEvents = document.getElementById('cardsUpcomingEvents');
+    if(events.length == 0){
+        cardsAllEvents.innerHTML = `
+        <div class="container mt-3">
+            <div class="alert alert-warning fs-5 text-center" role="alert">
+                No se han encontrado datos para mostrar!
+            </div>
+        </div>
+        `
+    } else {
 
-    for (let i = 0; i < events.length; i++) {
-        if(currentDate < events[i].date){
-            template += `
-                <div class="col mb-4">
+        events.forEach (i => {
+            if(currentDate < i.date){
+                template += `
+                <div class="col mb-4" id="${i._id}">
                     <div class="card">
-                        <img class="imgSize card-img-top" src="${events[ i ].image}" alt="...">
+                        <img class="imgSize card-img-top" src="${i.image}" alt="...">
                         <div class="card-body">
-                            <h3 class="card-title d-flex justify-content-center">${events[ i ].name}</h3>
-                            <p class="card-text"><strong>Date: </strong>${events[ i ].date}</p>
-                            <p class="card-text"><strong>Description: </strong>${events[ i ].description}</p>
-                            <p class="card-text"><strong>Category: </strong>${events[ i ].category}</p>
-                            <p class="card-text"><strong>Place: </strong>${events[ i ].place}</p>
-                            <p class="card-text"><strong>Capacity: </strong>${events[ i ].capacity}</p>
-                            <p class="card-text"><strong>Assistance: </strong>${events[ i ].assistance}</p>
-                            <p class="card-text"><strong>Price: $</strong>${events[ i ].price}</p>
+                            <h3 class="card-title d-flex justify-content-center">${i.name}</h3>
+                            <p class="card-text"><strong>Description: </strong>${i.description}</p>
+                            <p class="card-text"><strong>Price: $</strong>${i.price}</p>
                         </div>
                         <div class="d-grid gap-2">
-                            <a href="./details.html" id="goToEvent${i}" class="btn text-white"
+                            <a href="./details.html?_id=${i._id}" class="btn text-white"
                                 style="background-color: #537FE7;">Go to Event</a>
                         </div>
                     </div>
                 </div>
-            `
-            cardsUpcomingEvents.innerHTML = template;
-        };
+                `
+            }            
+        });
+        cardsAllEvents.innerHTML = template;
     };
 };
 
+// CREATE CARDS
+function checkBox(events) {
 
-cards(currentDate, data.events)
+    // for (let i = 0; i < events.length; i++) {
+    //     newEvents.push(events[i].category)
+    // }
+    
+    // let removeDuplicate = nameEvenmtsRepeat.filter((i, index) => {
+    //     return newEvents.indexOf(i) === index;
+    // });
+    
+    let nameEvenmtsRepeat = events.map(i => i.name)
+    // console.log(nameEvenmtsRepeat)
 
-// console.log('Upcoming Event')
-// console.log(template)
+    orderEvents = nameEvenmtsRepeat.sort(function (a, b) {
+        if (a.toLowerCase() > b.toLowerCase()) {
+          return 1;
+        }
+        if (a.toLowerCase() < b.toLowerCase()) {
+          return -1;
+        }
+        return 0;
+    });
+    // console.log(orderEvents)
+    
+    orderEvents.forEach(i => {
+        checkBoxCategories.innerHTML += 
+        `
+            <div>
+                <input class="form-check-input" type="checkbox" value="${i}" id="${i}" for="${i}">
+                <label class="form-check-label" for="${i}">${i}</label>
+            </div>
+        `
+    });
+
+};
+
+// SEARCH CARDS
+function serchText (arrayEvents, text){
+    let arrayEnd = arrayEvents.filter(i => 
+        i.name.toLowerCase().includes(text.toLowerCase())
+    );
+    return arrayEnd;
+};
+
+// FILTER CHECKBOXES
+function searchCheckBoxCategories(arrayEvents) {
+    
+    let checkBoxes= document.querySelectorAll("input[type='checkbox']");
+    // console.log(checkBoxes)
+    let arrayListCheckBoxes = Array.from(checkBoxes);
+    // console.log(arrayListCheckBoxes)
+    let chechedCheckBoxes = arrayListCheckBoxes.filter(i => i.checked);
+    // console.log(chechedCheckBoxes)
+
+    if (chechedCheckBoxes.length == 0) {
+        return arrayEvents;
+    }
+
+    let valueCheckBoxes = chechedCheckBoxes.map(i => i.value)
+    // console.log(valueCheckBoxes)
+    let arrayFilter = arrayEvents.filter(i => valueCheckBoxes.includes(i.name))
+    console.log(arrayFilter);
+
+    return arrayFilter;
+};
+
+// ******************************************
+//                   EVENTS
+// ******************************************
+// BUTTON CLEAR ALL
+// btnCleanOffInput.addEventListener('click', () => {
+//     inputSearchCards.value = '';
+//     inputSearchCards.focus();
+//     checkBoxCategory.checked = false;
+// });
+
+// SEARCH CARDS
+inputSearchCards.addEventListener('input', e => {
+    let cardsResult = serchText (events, e.target.value.toLowerCase());
+    cards (cardsResult);
+});
+
+
+checkBoxCategories.addEventListener('change', () => {
+    let filterCheckBox = searchCheckBoxCategories(events);
+    cards (filterCheckBox);
+});
+
+
+
+// CALL FUNCTIONS
+cards(data.events);
+checkBox(data.events);
